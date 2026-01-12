@@ -1,0 +1,596 @@
+:root {
+    --primary-color: rgb(255, 165, 0);
+    --secondary-color: rgb(0,0,255);
+    --third-color: white;
+    --primary-font: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --box-background: rgba(0,0,0,0.7);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: azure;
+    scroll-snap-type: proximity;
+    width: 100%;
+    margin: 0;
+}
+
+::-webkit-scrollbar {
+        width: 10px;
+        height: 20px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #1e293b; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: rgba(255,130,0,0.9); 
+        border-radius: 10px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: orange; 
+      }
+
+a {
+    text-decoration: none;
+}
+
+
+
+.hero {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100vh;
+    align-items: center;
+    background-image: linear-gradient(to bottom, rgba(255,165,0,0.7), rgba(128, 0, 128, 0.7), rgba(0,0,255, 0.7)), url(../midia/IER/image.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-sizing: cover;
+    overflow: hidden;
+    border-image-slice: cover;
+}
+
+.hero-content {
+    color: white;
+    font-family:var(--primary-font);
+    font-size: 30px;
+    margin-top: 2em;
+}
+
+.hero-main {
+    margin-top: -3em;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 500px;
+    margin-top: 30px;
+}
+
+.hero-logo img {
+    height: 300px;
+}
+
+.hero-play-icon {
+    opacity: 0.5;
+    transition-duration: 1s;
+}
+
+.hero-play-icon:hover {
+    animation-name: video-btn;
+    animation-duration: 1s;
+    animation-fill-mode: both;
+    cursor: pointer;
+}
+
+@keyframes video-btn {
+    from{transform: translateY(0px); transform: scale(1.0)}
+    to{transform: translateY(10px); transform: scale(1.4)}
+}
+.carrossel-container {
+    height: fit-content;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    background-image: linear-gradient(to right, rgba(50, 205, 50, 0.2), rgba(255, 255, 0, 0.2)), url(../midia/fundos/Basa-BG-2.jpg);
+    background-repeat: repeat-x;
+    background-size: contain;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+.carrossel-main {
+    height: 150px;;
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    width: auto;
+    flex-wrap: nowrap;
+    animation: carrossel-animation 20s linear infinite;
+    padding: 10px;
+    align-items: center;
+    background-color: rgba(0,0,0,0.1);
+    justify-content: flex-start;
+}
+
+.carrossel-item {
+    padding: 0px;
+    margin-right: 20px;
+    margin-left: 20px;
+    height: 100px;
+    display: flex;
+    padding: 10px;
+    justify-items: center;
+    align-items: center;
+
+}
+.carrossel-item:hover {
+    border: 2px solid black;
+    border-radius: 10px;
+
+}
+
+.carrossel-item img {
+    height: 80px;
+    border-radius: 10px;
+}
+
+@keyframes carrossel-animation {
+    from{transform: translatex(0)}
+    to{transform: translateX(-25%)}
+}
+
+@keyframes button-animation {
+    from{transform: translateY(0px)}
+    to{transform: translateY(-4px)}
+}
+
+#carrossel-btn {
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+    border-radius: 10px;
+    transition-duration: 0.5s;
+}
+
+#carrossel-btn:hover {
+    border: 2px solid white;
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+#carrossel-btn img {
+    height: 40px;
+    width: 40px;
+    color: white;
+}
+
+.container {
+            display: flex;
+            min-height: 80vh;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: #2c3e50;
+            padding: 20px 0;
+        }
+
+        .menu-option {
+            padding: 15px 20px;
+            color: #ecf0f1;
+            font-size: 25px;
+            font-family: var(--primary-font);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .menu-option:hover {
+            background-color: var(--primary-color);
+        }
+
+        .menu-option.active {
+            background-color: rgba(255, 166, 0, 0.7);
+        }
+
+        .content-area {
+            flex: 1;
+            padding: 20px;
+            background-color: rgb(94, 92, 92);
+        }
+
+        .content {
+            display: none;
+            font-size: 25px;
+            transition: 1s;
+            animation: 1s fadeIn reverse ease-out;
+        }
+
+        .content.active {
+            display: block;
+            color: white;
+            animation: fadeIn 1s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        h2 {
+            color: orange;
+            margin-bottom: 10px;
+        }
+
+        @media (max-width: 800px) {
+            .container {
+                flex-direction: column;
+            }
+            .sidebar {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+            }
+            .menu-option {
+                font-size: 15px;
+            }
+            .content {
+                font-size: 20px;
+                text-align: justify;
+                margin-right: 20px;
+                margin-left: 20px;
+            }
+            .value-title {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .value-column {
+                width: contain;
+            }
+
+            .hero-content {
+                font-size: 25px;
+                margin-top: 3em;
+            }
+        }
+
+.value-title {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    justify-items: center;
+    margin-top: 1em;
+    text-align: center;
+}
+
+.value-title h1 {
+    font-size: 50px;
+    font-family: var(--primary-font);
+    color: var(--primary-color);
+    height: 100px;
+}
+.documentation {
+    display: flex;
+    flex-direction: row;
+    height: fit-content;
+    width: 100%;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    margin: 0;
+    background-color: azure;
+    margin-bottom: 2em;
+}
+
+.documentation p {
+    font-family: var(--primary-font);
+    color: black;
+}
+
+.values-column img {
+    height: 40px;
+}
+
+.values-column {
+    display: flex;
+    flex-direction: column;
+    width: contain;
+    margin-top: 1em;
+    font-size: 20px;
+    text-align: center;
+    margin-left: 50px;
+    margin-right: 50px;
+    color: orange;
+    border-bottom: 2px solid orange;
+    border-left: 1px solid orange;
+    border-right: 2px solid orange;
+    border-radius: 40px;
+    border-right-width: 3px;
+    padding: 10px;
+    font-family: var(--primary-font);
+    transition-duration: 0.7s;
+    box-shadow: 5px 5px 20px rgba(0,0,255,0.5);
+}
+
+.values-column:hover {
+    transform: scale(1.1);
+    border-right: 4px solid orange;
+    border-bottom: 4px solid orange;
+}
+@media (max-width: 1300px) {
+    .values-column {
+        font-size: 15px;
+        width: fit-content;
+
+    }
+}
+@media (max-width: 1000px) {
+    .documentation {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .values-column {
+        width: 500px;
+        font-size: 20px;
+
+    }
+}
+
+@media (max-width: 800px) {
+    .values-column {
+        width: contain;
+    }
+    .values-column p {
+        margin-right: 50px;
+        margin-left: 50px;
+    }
+}
+
+.column-img img {
+    height: 130px;
+    animation: icon-pulse 3s 3s ease-in-out infinite;
+}
+
+@keyframes icon-pulse {
+    0% {transform: scale(1.0);}
+    50% {transform: scale(1.2);}
+    100% {transform: scale(1.0);}
+}
+
+#projetos-title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2em;
+    margin-bottom: 1em;
+    font-size: 30px;
+    font-family: var(--primary-font);
+    color: var(--primary-color);
+    text-align: center;
+}
+
+#projetos-container {
+    height: 80vh;
+    width: 100%;
+    overflow-x: scroll;
+    background-color: bisque;
+    margin-top: 5em;
+    background-color: white;
+    position: relative;
+    align-items: flex-end;
+    overflow-y: hidden;
+    scrollbar-color: var(--primary-color);
+    scroll-behavior: smooth;
+}
+
+.projetos-main {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    flex-wrap: nowrap;
+    align-items: center;
+    height: 80vh;
+    scroll-behavior: smooth;
+}
+
+.banner img {
+    height: 70vh;
+    width: auto;
+    transition-duration: 0.6s;
+    box-shadow: 5px 10px 20px rgba(255,165,0,1);
+}
+
+.banner img:hover {
+    transform: scale(1.2);
+    transform: translateY(-30px);
+    cursor: pointer;
+    box-shadow: 5px 5px 30px rgba(0,0,255,0.7);
+}
+
+footer {
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
+    width: 100%;
+    z-index: 0;
+    background-image: url(midia/projetos/IMG_2334.JPG);
+    background-size: cover;
+    align-items: flex-end;
+}
+
+#contacts-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    background-color: black;
+    width: 50%;
+    height: 70%;
+    z-index: 5;
+    text-align: center;
+}
+
+#footer-logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30%;
+    height: 70%;
+    background-color: rgba(0,0,0,1);
+    z-index: 5;
+    flex-direction: column;
+    border-top-right-radius: 50px;
+}
+
+#footer-logo img {
+    height: 300px;
+}
+
+#footer-logo code {
+    color: gray;
+    font-family: cursive;
+    justify-self: end;
+    bottom: 20px;
+}
+
+.contact {
+    display: flex;
+    flex-direction: row;
+    background: linear-gradient(to right, orange, purple, blue, orange);
+    background-size: 300%;
+    background-repeat: repeat-x;
+    height: 50px;
+    width: 60%;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    transition: 4s;
+}
+
+.contact a {
+    color: white;
+    text-decoration: none;
+    font-size: 30;
+    font-family: var(--primary-font);
+
+}
+.contact:hover {
+    animation: button-background-animation 4s both;
+}
+
+@keyframes button-background-animation {
+    0% {background-position: 0;}
+    100% {background-position: 300%;}
+}
+
+@media (max-width: 800px) {
+    footer {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    #contacts-container {
+        margin-top: 10%;    
+        width: 70%;
+        border-top-right-radius: 50px;
+    }
+    .contact {
+        width: 80%;
+    }
+    #footer-logo {
+        width: 70%;
+        border-radius: 0;
+    }
+}
+
+#inativo {
+    display: flex;
+    flex-direction: column;
+    height: 80vh;
+    width: 100%;
+    position: absolute;
+    background-color: rgba(50, 50, 50, 0.5);
+    color: white;
+    justify-items: center;
+    align-items: center;
+    text-emphasis-color: orange;
+    text-align: center;
+    font-size: 50px;
+}
+
+.ativo {
+    display: none;
+}
+
+#Copyright {
+    display: block;
+    color: white;
+    font-size: 20px;
+}
+
+#copyright small {
+    color: white;
+    font-size: 20px;
+
+}
+
+/*correção para mobile*/
+/* Adicione estas regras no seu CSS existente */
+
+/* 1. Prevenir overflow horizontal */
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* 2. Garantir que todos os elementos respeitem os limites da tela */
+* {
+    box-sizing: border-box;
+}
+
+/* 3. Elementos específicos que frequentemente causam overflow */
+img, video, iframe, canvas, table {
+    max-width: 100%;
+    height: auto;
+}
+
+/* 4. Container principal responsivo */
+.container {
+    width: 100%;
+    padding: 0 15px;
+    margin: 0 auto;
+}
+
+/* 5. Prevenir textos longos de quebrar o layout */
+p, h1, h2, h3, h4, h5, h6, span, a {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* 6. Para elementos com largura fixa (se necessário) */
+@media (max-width: 768px) {
+    .elemento-com-largura-fixa {
+        width: 100% !important;
+        max-width: 100%;
+    }
+    
+    /* Remover larguras mínimas/máximas problemáticas */
+    table, div, section {
+        min-width: 0 !important;
+    }
+}

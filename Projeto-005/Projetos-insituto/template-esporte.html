@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esportes - Instituto Edson Royer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Reset e configurações gerais */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-color: #003366;
+            --secondary-color: #e63946;
+            --accent-color: #2a9d8f;
+            --light-color: #f8f9fa;
+            --dark-color: #212529;
+            --gray-color: #6c757d;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: var(--dark-color);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 51, 102, 0.85), rgba(0, 51, 102, 0.9)), 
+                        url('https://images.unsplash.com/photo-1536922246289-88c42f957773?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 20px;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 30px;
+            line-height: 1.6;
+        }
+
+        .hero-btn {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: 2px solid var(--secondary-color);
+        }
+
+        .hero-btn:hover {
+            background-color: transparent;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator i {
+            font-size: 2rem;
+            color: white;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* Seções gerais */
+        section {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            color: var(--primary-color);
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+        }
+
+        /* Carrossel */
+        .carousel-section {
+            background-color: white;
+        }
+
+        .carousel-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 15px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+
+        .carousel-item {
+            min-width: 100%;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            color: white;
+            text-align: center;
+            padding: 40px;
+            position: relative;
+        }
+
+        .carousel-item h3 {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        .carousel-item p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            line-height: 1.6;
+        }
+
+        .carousel-item-1 {
+            background: linear-gradient(rgba(0, 51, 102, 0.8), rgba(0, 51, 102, 0.9)), 
+                        url('https://images.unsplash.com/photo-1551958219-acbc608c6377?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .carousel-item-2 {
+            background: linear-gradient(rgba(230, 57, 70, 0.8), rgba(230, 57, 70, 0.9)), 
+                        url('https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .carousel-item-3 {
+            background: linear-gradient(rgba(42, 157, 143, 0.8), rgba(42, 157, 143, 0.9)), 
+                        url('https://images.unsplash.com/photo-1517649763962-0c623066013b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(255, 255, 255, 0.2);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .carousel-btn:hover {
+            background-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .carousel-btn.prev {
+            left: 20px;
+        }
+
+        .carousel-btn.next {
+            right: 20px;
+        }
+
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: #ccc;
+            margin: 0 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .indicator.active {
+            background-color: var(--primary-color);
+            transform: scale(1.2);
+        }
+
+        /* Seção Modalidades */
+        .modalidades-section {
+            background-color: #f8f9fa;
+        }
+
+        .modalidades-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .modalidade-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .modalidade-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .modalidade-img {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .modalidade-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .modalidade-card:hover .modalidade-img img {
+            transform: scale(1.05);
+        }
+
+        .modalidade-content {
+            padding: 25px;
+        }
+
+        .modalidade-content h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .modalidade-content p {
+            color: var(--gray-color);
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .modalidade-icon {
+            font-size: 2rem;
+            color: var(--secondary-color);
+            margin-bottom: 15px;
+        }
+
+        /* Seção Benefícios */
+        .beneficios-section {
+            background-color: white;
+        }
+
+        .beneficios-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+        }
+
+        .beneficio-item {
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            text-align: center;
+            padding: 30px 20px;
+            border-radius: 10px;
+            background-color: #f8f9fa;
+            transition: all 0.3s ease;
+        }
+
+        .beneficio-item:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateY(-5px);
+        }
+
+        .beneficio-item:hover .beneficio-icon {
+            color: white;
+        }
+
+        .beneficio-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .beneficio-item h3 {
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: white;
+        }
+
+        .footer-links h4, .footer-contact h4 {
+            font-size: 1.3rem;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-links h4::after, .footer-contact h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--secondary-color);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary-color);
+            padding-left: 5px;
+        }
+
+        .footer-contact p {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .footer-contact i {
+            margin-right: 10px;
+            color: var(--secondary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .carousel-item {
+                height: 400px;
+                padding: 20px;
+            }
+            
+            .carousel-item h3 {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero-btn {
+                padding: 12px 24px;
+                font-size: 1rem;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .carousel-item {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Esportes no Instituto Edson Royer</h1>
+            <p>Promovendo saúde, integração e desenvolvimento através da prática esportiva. Descubra nossas modalidades, eventos e como o esporte transforma vidas em nossa comunidade.</p>
+            <a href="#modalidades" class="hero-btn">Conheça Nossas Modalidades</a>
+        </div>
+        <div class="scroll-indicator">
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- Carrossel -->
+    <section class="carousel-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Destaques do Esporte</h2>
+            </div>
+            <div class="carousel-container">
+                <div class="carousel">
+                    <div class="carousel-item carousel-item-1">
+                        <h3>Competições Internas</h3>
+                        <p>O Instituto Edson Royer organiza torneios e competições esportivas internas que incentivam a superação pessoal e o trabalho em equipe.</p>
+                    </div>
+                    <div class="carousel-item carousel-item-2">
+                        <h3>Formação de Atletas</h3>
+                        <p>Nossa missão é desenvolver talentos esportivos, oferecendo treinamento qualificado e estrutura adequada para atletas em formação.</p>
+                    </div>
+                    <div class="carousel-item carousel-item-3">
+                        <h3>Esporte e Inclusão</h3>
+                        <p>Promovemos a inclusão social através do esporte, oferecendo atividades adaptadas e acessíveis para todos os membros da comunidade.</p>
+                    </div>
+                </div>
+                <button class="carousel-btn prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-btn next"><i class="fas fa-chevron-right"></i></button>
+                <div class="carousel-indicators">
+                    <div class="indicator active" data-slide="0"></div>
+                    <div class="indicator" data-slide="1"></div>
+                    <div class="indicator" data-slide="2"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modalidades -->
+    <section id="modalidades" class="modalidades-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Modalidades Esportivas</h2>
+            </div>
+            <div class="modalidades-grid">
+                <div class="modalidade-card">
+                    <div class="modalidade-img">
+                        <img src="https://images.unsplash.com/photo-1546519638-68e109498ffc?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Futebol">
+                    </div>
+                    <div class="modalidade-content">
+                        <div class="modalidade-icon">
+                            <i class="fas fa-futbol"></i>
+                        </div>
+                        <h3>Futebol</h3>
+                        <p>Treinamentos para todas as idades, desenvolvendo habilidades técnicas, táticas e promovendo o trabalho em equipe.</p>
+                    </div>
+                </div>
+                <div class="modalidade-card">
+                    <div class="modalidade-img">
+                        <img src="https://images.unsplash.com/photo-1551958219-acbc608c6377?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Basquete">
+                    </div>
+                    <div class="modalidade-content">
+                        <div class="modalidade-icon">
+                            <i class="fas fa-basketball-ball"></i>
+                        </div>
+                        <h3>Basquete</h3>
+                        <p>Desenvolvimento de habilidades motoras, agilidade e coordenação através do basquete em nossas quadras.</p>
+                    </div>
+                </div>
+                <div class="modalidade-card">
+                    <div class="modalidade-img">
+                        <img src="https://images.unsplash.com/photo-1517649763962-0c623066013b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Vôlei">
+                    </div>
+                    <div class="modalidade-content">
+                        <div class="modalidade-icon">
+                            <i class="fas fa-volleyball-ball"></i>
+                        </div>
+                        <h3>Vôlei</h3>
+                        <p>Atividades que estimulam a cooperação, reflexos rápidos e espírito esportivo em nossa quadra de vôlei.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefícios -->
+    <section class="beneficios-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Benefícios do Esporte</h2>
+            </div>
+            <div class="beneficios-container">
+                <div class="beneficio-item">
+                    <div class="beneficio-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3>Saúde Física</h3>
+                    <p>Melhora da capacidade cardiovascular, fortalecimento muscular e desenvolvimento da coordenação motora.</p>
+                </div>
+                <div class="beneficio-item">
+                    <div class="beneficio-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3>Integração Social</h3>
+                    <p>O esporte promove a interação entre os participantes, criando laços de amizade e senso de comunidade.</p>
+                </div>
+                <div class="beneficio-item">
+                    <div class="beneficio-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>Desenvolvimento Pessoal</h3>
+                    <p>Desenvolve disciplina, resiliência, trabalho em equipe e capacidade de superação de desafios.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <h3>Instituto Edson Royer</h3>
+                    <p>Transformando vidas através do esporte e da educação há mais de 20 anos.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Links Rápidos</h4>
+                    <ul>
+                        <li><a href="#">Início</a></li>
+                        <li><a href="#modalidades">Modalidades</a></li>
+                        <li><a href="#">Calendário de Eventos</a></li>
+                        <li><a href="#">Inscreva-se</a></li>
+                        <li><a href="#">Contato</a></li>
+                    </ul>
+                </div>
+                <div class="footer-contact">
+                    <h4>Contato</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Rua do Esporte, 123 - Centro</p>
+                    <p><i class="fas fa-phone"></i> (11) 3456-7890</p>
+                    <p><i class="fas fa-envelope"></i> esporte@institutoedsonroyer.org.br</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2023 Instituto Edson Royer. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Carrossel Interativo
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.querySelector('.carousel');
+            const items = document.querySelectorAll('.carousel-item');
+            const prevBtn = document.querySelector('.carousel-btn.prev');
+            const nextBtn = document.querySelector('.carousel-btn.next');
+            const indicators = document.querySelectorAll('.indicator');
+            
+            let currentIndex = 0;
+            const totalItems = items.length;
+            
+            // Função para atualizar carrossel
+            function updateCarousel() {
+                carousel.style.transform = `translateX(-${currentIndex * 100}%)`;
+                
+                // Atualizar indicadores
+                indicators.forEach((indicator, index) => {
+                    if (index === currentIndex) {
+                        indicator.classList.add('active');
+                    } else {
+                        indicator.classList.remove('active');
+                    }
+                });
+            }
+            
+            // Evento para botão próximo
+            nextBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % totalItems;
+                updateCarousel();
+            });
+            
+            // Evento para botão anterior
+            prevBtn.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + totalItems) % totalItems;
+                updateCarousel();
+            });
+            
+            // Evento para indicadores
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentIndex = index;
+                    updateCarousel();
+                });
+            });
+            
+            // Auto-play para o carrossel
+            let carouselInterval = setInterval(() => {
+                currentIndex = (currentIndex + 1) % totalItems;
+                updateCarousel();
+            }, 5000);
+            
+            // Pausar auto-play ao interagir
+            const carouselContainer = document.querySelector('.carousel-container');
+            carouselContainer.addEventListener('mouseenter', () => {
+                clearInterval(carouselInterval);
+            });
+            
+            carouselContainer.addEventListener('mouseleave', () => {
+                carouselInterval = setInterval(() => {
+                    currentIndex = (currentIndex + 1) % totalItems;
+                    updateCarousel();
+                }, 5000);
+            });
+            
+            // Scroll suave para âncoras
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
