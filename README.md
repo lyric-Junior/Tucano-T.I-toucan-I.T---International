@@ -9,11 +9,9 @@ A wide variety of applications built with different stacks and architectures, in
 
 Java (Spring, APIs, backend services)
 
-PHP (Laravel, backend utilities, experiments)
-
 Full Front-End (HTML, CSS, JavaScript, React, Next.js, Vue)
 
-SQL & NoSQL databases
+SQL & NoSQL Databases
 
 Authentication, testing, and deployment workflows
 
